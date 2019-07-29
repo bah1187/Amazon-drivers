@@ -1,0 +1,98 @@
+/* =================================================================
+variables
+================================================================= */
+//Breakpoints
+$mid-small: 550px;
+$end-small: 800px;
+$max-width: 1000px;
+
+//System variables
+$primary: #035A8F;
+$primary-contrast: #fff;
+$accent: #ccc;
+$text: #666;
+$alert: #c00;
+
+//Units
+$line-height: 1.25;
+$reset-line-height: 1;
+$content-max: 1320px;
+$percent-width: 95%;
+
+//Effects
+$hover-transition: 1s;
+
+//Colors
+$color1: #00a4a2; //light teal
+$color2: #006663; //dark teal
+
+//Fonts
+$base-font: 'Helvetica', 'Arial', sans-serif; // default font
+
+/* =================================================================
+extends
+================================================================= */
+
+*[aria-hidden="true"]{
+	display: none;
+}
+
+/*! =================================================================
+Mixins
+================================================================= */
+
+//Clear Floats
+@mixin clearfix {
+    &:after {
+        content: '';
+        clear: both;
+        display: block;
+    }
+}
+
+//Font size px to rem
+@function px($target) {
+    @return #{$target/16.0}rem;
+}
+
+//Adjustable Width Content Container
+@mixin content-container($change-max-width){
+    @include clearfix;
+    width: $percent-width;
+    margin: 0 auto;
+    display: block;
+    background-color: yellow;
+    max-width: $change-max-width;
+    @content;
+}
+
+//calculates pixel perfect spacing between elements by accounting for line height.
+//pass in the target pixel amount to $px-amt-of-space
+@function spacer($px-amt-of-space) {
+    @return #{$px-amt-of-space/$line-height}px;
+}
+
+//Form Fields
+@mixin form-field {
+	-webkit-appearance: none;
+    background: #fff;
+    width: 100%;
+    border-radius: 0;
+    color: $text;
+    padding: 0 0 0 10px;
+    border: 1px solid #777;
+	height: 45px;
+    @content;
+}
+
+//Reset for Buttons
+@mixin button-reset {
+	border: none;
+    background: none;
+    cursor: pointer;
+    -webkit-appearance: none;
+	-moz-appearance: none;
+    appearance: none;
+	-webkit-border-radius: 0;
+	border-radius: 0;
+}
